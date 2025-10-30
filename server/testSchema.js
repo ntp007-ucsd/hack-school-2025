@@ -8,7 +8,11 @@ const config = {
 };
 mongoose
   .connect(config.DB_URL)
-  .then(() => console.log("Connected to MongoDB"))
+  .then(() => {
+        console.log("Connected to MongoDB");
+
+    testSchema();
+  })
   .catch((err) => console.error("Error connecting to MongoDB: ", err));
 
 const Poll = require("./models/Poll");
@@ -34,5 +38,3 @@ const testSchema = async (req, res) => {
   await poll.save();
   console.log("Success!");
 };
-
-testSchema();
